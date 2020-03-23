@@ -5,7 +5,6 @@
 import requests,os,sys,time,json
 from bs4 import BeautifulSoup
 from tqdm import tqdm
-from pyquery import PyQuery
 print("\033[0m")
 m = "\033[1;91m"
 h = "\033[1;92m"
@@ -34,14 +33,14 @@ def ceklog():
 		de = json.loads(file_json.read())
 		isi = {"username_login":de["username_login"], "password_login":de["password_login"], "submit_login":"LOGIN"}
 		y = res.post(url+"/chat/index.php", data=isi)
-		content = y.text
-		q = PyQuery(content)
-		nama = q("nama").text()
-		user = q("user").text()
-		gender = q("gender").text()
-		alamat = q("alamat").text()
-		idi = q("idi").text()
-		if "Login Berhasil" in q("title").text():
+		soup = BeautifulSoup(y.text, 'html.parser')
+		title = soup.find('title').text
+		nama = soup.find('nama').text
+		user = soup.find('user').text
+		gender = soup.find('gender').text
+		alamat = soup.find('alamat').text
+		idi = soup.find('idi').text
+		if "Login Berhasil" in title:
 			sep = open("data_login.json","w")
 			sep.write('{"username_login":"'+de["username_login"]+'", "password_login":"'+de["password_login"]+'"}')
 			time.sleep(1)
@@ -101,14 +100,13 @@ def login():
 	print(h+"%"+p+" Loading ...")
 	isi = {"username_login":us, "password_login":ps, "submit_login":"LOGIN"}
 	y = res.post(url+"/chat/index.php", data=isi)
-	content = y.text
-	q = PyQuery(content)
-	title = q("title").text()
-	nama = q("nama").text()
-	user = q("user").text()
-	gender = q("gender").text()
-	alamat = q("alamat").text()
-	idi = q("idi").text()
+	soup = BeautifulSoup(y.text, 'html.parser')
+	title = soup.find('title').text
+	nama = soup.find('nama').text
+	user = soup.find('user').text
+	gender = soup.find('gender').text
+	alamat = soup.find('alamat').text
+	idi = soup.find('idi').text
 	if "Login Berhasil" in title:
 		print(h+"~ "+p+"Login Success !")
 		sep = open("data_login.json","w")
@@ -175,9 +173,8 @@ def menu():
 	else:
 		kel = "Female"
 	y = res.get(url+"/chat/index.php")
-	content = y.text
-	q = PyQuery(content)
-	total = q("total").text()
+	soup = BeautifulSoup(y.text, 'html.parser')
+	total = soup.find('total').text
 	os.system("clear")
 	print(p+"["+m+welkam+p+"]").center(77)
 	print("https://github.com/rezadkim").center(50)
