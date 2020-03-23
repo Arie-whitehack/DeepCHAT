@@ -26,3 +26,8 @@ $ pip2 install tqdm<br>
 $ git clone https://github.com/rezadkim/DeepCHAT<br>
 $ cd DeepCHAT<br>
 $ python2 chat.py<br>
+<br>
+
+# Image
+
+<img src="/rezadkim/DeepCHAT/blob/master/WhatsApp%20Image%202020-03-23%20at%201.46.49%20PM.jpeg?raw=true">
