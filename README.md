@@ -30,4 +30,4 @@ $ python2 chat.py<br>
 
 # Image
 
-<img src="/rezadkim/DeepCHAT/blob/master/WhatsApp%20Image%202020-03-23%20at%201.46.49%20PM.jpeg?raw=true">
+<img src="https://raw.githubusercontent.com/rezadkim/DeepCHAT/master/WhatsApp%20Image%202020-03-23%20at%201.46.49%20PM.jpeg">
