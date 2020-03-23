@@ -1,5 +1,7 @@
 # DeepCHAT
-Chat page for linux terminal
+Chat page for linux terminal<br>
+Version : 0.2<br>
+Language : Python 2.7
 
 # Use Module :
 ~ requests<br>
